@@ -1,0 +1,10 @@
+
+
+    <div class="form">
+        {{ form_start(form) }}
+        
+            <div class="col-md-5">{{ form_rest(form) }}</div>
+            <button class="btn btn-primary" type="submit">{{ button|default('valider')}}</button>
+
+        {{ form_end(form) }}
+    </div>

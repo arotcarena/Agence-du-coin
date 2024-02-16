@@ -1,0 +1,7 @@
+
+
+
+<form action="{{ path('admin_option_delete', {'id':option.id}) }}" style="display: inline-block" method="post" onsubmit="return confirm('Supprimer l'option ?')">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ option.id) }}">
+    <button type="submit" class="btn btn-secondary">Supprimer</button>
+</form>

@@ -1,0 +1,9 @@
+
+<div class="container">
+    <h4>{{ contact.firstName }} {{ contact.lastName }}</h4>
+    <p>tél : {{ contact.phone }} </p>
+    <p>au sujet de l'annonce : <a href="{{ url('houses_show', {"id": house.id, "slug": house.slug}) }}"> {{ house.title }}</a> </p>
+    <p>au prix de : {{ house.priceFormatted }}</p>
+    <p>Message : </p>
+    <p>{{ contact.message|nl2br }}</p>
+</div>

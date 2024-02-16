@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Administration des options : listing{% endblock %}
+
+{% block body %}
+
+            {# messages flash #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} container">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+
+
+    <div class="container">
+        <h1>Gérer les options</h1>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for option in options %}
+                    <tr>
+                        <td>{{ option.name }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ path('admin_option_edit', {'id': option.id}) }}">Editer</a>
+                            {{ include('pages/admin/option/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="">
+            <a href="{{ path('admin_option_new') }}" class="btn btn-primary">+ Ajouter</a>
+        </div>
+    </div>
+{% endblock %}

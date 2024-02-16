@@ -1,0 +1,26 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+contact:
+    path: /nous-contacter
+    controller: App\Controller\ContactController::index
+
+
+houses_show:
+    path: /biens/{slug}-{id}
+    controller: App\Controller\HouseController::show
+    requirements: {"slug": "[a-z0-9-]*"}
+
+logout:
+    path: /logout
+
+

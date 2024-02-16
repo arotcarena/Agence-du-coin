@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ house.title }}{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-8">
+                {% if house.imageName is not empty %}
+                    <img class="card-img-top" src="{{ vich_uploader_asset(house, 'imageFile')|imagine_filter('medium') }}" alt="image"/>
+                {% else %}
+                    <img class="card-img-top" src="{{ 'images/house/default.jpg' |imagine_filter('medium') }}" alt="image"/>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <h1>{{ house.title }}</h1>
+                <h2>{{ house.rooms }} pièce(s) - {{ house.surface }} m²</h2>
+                <div class="text-primary" style="font-weight: bold; font-size: 4rem">{{ house.priceFormatted }}</div>
+
+                <a href="{{ button_target }}" class="btn {{ button_class }} mb-4">Contacter l'agence</a>
+                
+                {% if contact is defined %}
+                    {% if not form.vars.valid %}
+                        <div class="alert alert-danger">Le formulaire comporte des erreurs</div>
+                    {% endif %}
+
+                    <div id="contactForm" class="mt-4">
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col">{{ form_row(form.firstName) }} </div>
+                            <div class="col">{{ form_row(form.lastName) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col">{{ form_row(form.phone) }} </div>
+                            <div class="col">{{ form_row(form.email) }}</div>
+                        </div>
+                        {{ form_rest(form) }}
+                        <div class="form-group">
+                            <button class="btn btn-primary">Envoyer</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <p>{{ house.description | nl2br }}</p>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Caractéristiques</h2>
+            <table class="table table-striped">
+                <tr>
+                    <td>Surface habitable</td>
+                    <td>{{ house.surface }} m²</td>
+                </tr>
+                <tr>
+                    <td>Pièces</td>
+                    <td>{{ house.rooms }}</td>
+                </tr>
+                <tr>
+                    <td>Chambres</td>
+                    <td>{{ house.bedrooms }}</td>
+                </tr>
+                <tr>
+                    <td>Etage</td>
+                    <td>{{ house.floor }}</td>
+                </tr>
+                <tr>
+                    <td>Chauffage</td>
+                    <td>{{ house.heatType }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h2>Options</h2>
+            <ul class="list-group">
+                {% for option in house.options %}
+                        <li class="list-group-item">{{ option.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+</div>
+       
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Inscription</h1>
+
+        {{ form_start(form) }}
+
+            {{ form_row(form.username) }}
+            {{ form_row(form.password) }}
+
+            <div class="form-group has-validation">
+                <label for="password_confirm" class="form-label mb-2">confirmez le mot de passe</label>
+                <input class="form-control {{ class }}" type="password" id="password_confirm" name="password_confirm">
+            </div>
+            {% if class is same as('is-invalid') %}
+                <div style="color: red; font-size: 0.8em;">Les deux mots de passe ne correspondent pas</div>
+            {% endif %}
+
+        <div class="mt-4">    
+        {{ form_end(form) }}
+        </div>
+        
+    </div>
+{% endblock %}
+

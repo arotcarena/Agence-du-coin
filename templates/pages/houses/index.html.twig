@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Tous nos biens immobiliers{% endblock %}
+
+{% block body %}
+
+
+
+<div class="jumbotron p-4" style="background-color: rgba(10, 10, 10, 0.1);">
+    <div class="container">
+        {{ form_start(form) }}
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.max_price) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.min_price) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.min_rooms) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.min_surface) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.options) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Filtrer les résultats</button>
+                </div>
+            </div>  
+        {{ form_end(form) }}
+    </div>
+</div>
+
+<div class="container">
+    {# total items count #}
+    <div class="count m-4">
+        <span style="font-weight: bold; font-size: 1.2em;">{{ houses.getTotalItemCount }}</span> résultats de recherche
+    </div>
+
+    <div class="row">
+        {# table body #}
+        {% for house in houses %}
+            <div class="col-md-4">
+                {{ include('pages/houses/_house.html.twig') }}
+            </div>
+        {% endfor %}
+    </div>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(houses) }}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Administration : Ajouter une option{% endblock %}
+
+{% block body %}
+
+    
+
+<div class="container">
+    <h1>Ajouter une option</h1>
+
+    {{ include('pages/admin/option/_form.html.twig', {button: 'Ajouter'}) }}
+    
+</div>
+       
+{% endblock %}

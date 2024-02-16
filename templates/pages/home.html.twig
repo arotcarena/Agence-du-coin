@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'Accueil{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+
+    <div class="container">
+        <h1>Bienvenue à l'agence du coin</h1>
+    
+        <P>Bonjour</p>
+        <p>
+            Blabla bla et puis bla bla et puis bla. Blabla bla et puis bla bla et puis bla. Blabla bla et puis bla bla et puis bla. Blabla bla et puis bla bla et puis bla. Blabla bla et puis bla bla et puis bla. Blabla bla et puis bla bla et puis bla.
+        </p>
+    </div>
+
+
+            
+
+
+    <div class="container">
+        <h2>Les derniers biens</h2>
+        <div class="row flex">
+            
+            {% for house in houses %}
+            <div class="col-3">
+                {{ include('pages/houses/_house.html.twig') }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+

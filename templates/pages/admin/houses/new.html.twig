@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Administration : Ajouter un bien{% endblock %}
+
+{% block body %}
+
+    
+
+<div class="container">
+    <h1>Ajouter un bien</h1>
+
+    {{ include('pages/admin/houses/parts/_form.html.twig', {button: 'Ajouter'}) }}
+    
+</div>
+       
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/zh-TW.min.js"></script>
+    <script>
+        $('select').select2();
+    </script>
+{% endblock %}

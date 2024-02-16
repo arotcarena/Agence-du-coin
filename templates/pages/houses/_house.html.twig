@@ -1,0 +1,19 @@
+<div class="card mb-4">
+    <div class="card-body">
+        {% if house.imageName is not empty %}
+         <img class="card-img-top" src="{{ vich_uploader_asset(house, 'imageFile')|imagine_filter('my_thumb') }}" alt="image"/>
+        {% else %}
+         <img class="card-img-top" src="{{ 'images/house/default.jpg' |imagine_filter('my_thumb') }}" alt="image"/>
+        {% endif %}
+        <h5 class="card-title"><a href="{{ path('houses_show', {'id': house.id, 'slug': house.slug}) }}">{{ house.title }}</a></h5>
+        <p class="card-text">{{ house.city }} ({{ house.postalCode}})</p>
+        <p class="text-primary" style="font-weight: bold; font-size: 2em;">{{ house.priceFormatted }}</p>
+        <p class="card-text">{{ house.surface }} m²</p>
+        <ul>
+            {% for option in house.options %}
+                    <li>{{ option.name }}</li>
+            {% endfor %}
+        </ul>
+        {{ house.createdAtFormatted }}
+    </div>
+</div>
